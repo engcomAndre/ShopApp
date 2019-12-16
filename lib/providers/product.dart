@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 class Product with ChangeNotifier {
   final String id;
-  final String title;
+  String title;
   final String description;
   final String imageUrl;
   final double price;
@@ -18,6 +18,11 @@ class Product with ChangeNotifier {
 
   void toggleFavoriteStatus() {
     isFavorite = !isFavorite;
+    if (isFavorite) {
+      title = title + "!";
+    } else {
+      title = title.replaceFirst('!', '');
+    }
     notifyListeners();
   }
 }
